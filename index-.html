@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VertexSlab - Innovative Software Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .tech-icon {
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .mockup-screen {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="bg-blue-500 p-2 rounded-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <span class="ml-2 font-bold text-xl">VertexSlab</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#process" class="text-gray-700 hover:text-blue-600 transition-colors">Process</a>
+                    <a href="#faq" class="text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white space-y-6">
+                <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                    WE ARE BUILDING<br>
+                    <span class="text-blue-100">SOFTWARE</span> TO HELP
+                </h1>
+                <p class="text-xl text-blue-100 max-w-lg">
+                    Vertex crafts software solutions that fuel innovation, efficiency, and growth for businesses in an ever-evolving digital world.
+                </p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Get Started
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="floating">
+                    <div class="mockup-screen p-6 relative">
+                        <!-- Dashboard mockup -->
+                        <div class="bg-white rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                </div>
+                                <div class="text-gray-400 text-sm">Dashboard</div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="bg-blue-100 p-3 rounded-lg">
+                                    <div class="text-blue-600 font-bold text-lg">247</div>
+                                    <div class="text-gray-600 text-sm">Projects</div>
+                                </div>
+                                <div class="bg-green-100 p-3 rounded-lg">
+                                    <div class="text-green-600 font-bold text-lg">98%</div>
+                                    <div class="text-gray-600 text-sm">Success</div>
+                                </div>
+                                <div class="bg-purple-100 p-3 rounded-lg">
+                                    <div class="text-purple-600 font-bold text-lg">24/7</div>
+                                    <div class="text-gray-600 text-sm">Support</div>
+                                </div>
+                            </div>
+                            <!-- Chart placeholder -->
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-32 rounded-lg mb-4 flex items-end justify-center pb-4">
+                                <div class="flex space-x-2">
+                                    <div class="bg-white/30 w-4 h-16 rounded"></div>
+                                    <div class="bg-white/50 w-4 h-20 rounded"></div>
+                                    <div class="bg-white/70 w-4 h-12 rounded"></div>
+                                    <div class="bg-white/90 w-4 h-24 rounded"></div>
+                                    <div class="bg-white w-4 h-18 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side panel -->
+                        <div class="absolute -right-6 top-12 bg-white rounded-lg p-4 shadow-lg w-48">
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold text-sm">Team Meeting</div>
+                                        <div class="text-gray-500 text-xs">2:00 PM</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold text-sm">Code Review</div>
+                                        <div class="text-gray-500 text-xs">4:30 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">How it Works</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
+            <p class="text-gray-600 max-w-3xl mx-auto mb-16">
+                At Vertex, we provide innovative technology solutions designed to help businesses scale and succeed through a streamlined process built for results.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-blue-600 font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Plan & Prototype</h3>
+                    <p class="text-gray-600">We begin by understanding your vision, goals, and users. Through collaborative workshops and research, we define the scope and create interactive prototypes.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-green-600 font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Build & Iterate</h3>
+                    <p class="text-gray-600">Our development team brings the prototype to reality using modern frameworks and agile methods. We build in sprints and test continuously.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-purple-600 font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Launch & Scale</h3>
+                    <p class="text-gray-600">We deploy your solution with robust infrastructure and provide ongoing support to ensure your software scales with your business growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">Innovative</h3>
+                    <p>From AI-powered applications to transformative technology that bridges business challenges.</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-500 to-teal-600 p-8 rounded-xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">Scalable</h3>
+                    <p>Robust cloud infrastructure and systems that help businesses adapt, grow, and stay competitive.</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">Efficient</h3>
+                    <p>Aligning technology with real-world needs to create seamless digital experiences that drive success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">What's Your Stack?</h2>
+            <p class="text-gray-600 mb-12">You have got a business, we have got brilliant minds. Leverage our squad of software engineers to bring ideas to life in whatever tech stack you need.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">Py</div>
+                    <div class="text-sm font-medium">Python</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-black rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">N</div>
+                    <div class="text-sm font-medium">Next.js</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">M</div>
+                    <div class="text-sm font-medium">MongoDB</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-blue-400 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">R</div>
+                    <div class="text-sm font-medium">React</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">P</div>
+                    <div class="text-sm font-medium">PostgreSQL</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-red-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">N</div>
+                    <div class="text-sm font-medium">NestJS</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-orange-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">A</div>
+                    <div class="text-sm font-medium">AWS</div>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
+                    <div class="w-12 h-12 bg-blue-700 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">D</div>
+                    <div class="text-sm font-medium">Docker</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Services That Drive Real Results</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto mb-16"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Custom Software Development</h3>
+                        <p class="text-gray-600">End-to-end development of web, mobile, or desktop apps tailored to your specific goals, workflows, and user needs.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Staff Augmentation</h3>
+                        <p class="text-gray-600">Augment your tech team with top-tier developers to meet long-term goals—saving on sourcing, recruiting, and training overhead.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+                        <p class="text-gray-600">Craft beautiful, intuitive interfaces that enhance user experience and convert users into loyal customers.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">AI & Automation Solutions</h3>
+                        <p class="text-gray-600">Use AI and automation to optimize tasks, personalize user experiences, and unlock new product capabilities.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">API & Systems Integration</h3>
+                        <p class="text-gray-600">Seamlessly connect third-party services and internal tools to streamline workflows and scale operations faster.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-pink-600"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Mobile App Development</h3>
+                        <p class="text-gray-600">Deliver sleek, high-performance mobile apps for iOS, Android, or both—built to scale and delight users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-16">What Our Customers Are Saying</h2>
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="text-2xl text-gray-400 mb-4">"</div>
+                <p class="text-lg text-gray-700 mb-6">Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made.</p>
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">CE</div>
+                    <div>
+                        <div class="font-semibold">Chiamaka Emem</div>
+                        <div class="text-gray-500">CEO, Opium Digitals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What is this service?</h3>
+                    <p class="text-gray-600">We provide comprehensive software development services including custom applications, AI solutions, and digital transformation consulting to help businesses leverage technology for growth and efficiency.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What problem does it solve?</h3>
+                    <p class="text-gray-600">We address operational inefficiencies, outdated technology systems, scalability challenges, and the need for digital transformation in modern businesses.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">Who typically needs this service?</h3>
+                    <p class="text-gray-600">Startups, SMEs, and enterprises across industries like healthcare, fintech, e-commerce, and manufacturing who need custom software solutions or team augmentation.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What are the key components of this service?</h3>
+                    <p class="text-gray-600">Custom software development, UI/UX design, mobile apps, AI integration, cloud infrastructure, API development, and ongoing maintenance and support.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">How is the service delivered?</h3>
+                    <p class="text-gray-600">We offer both project-based development and ongoing support through dedicated teams, using agile methodologies with cloud-based deployment and continuous integration.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What technologies do you use?</h3>
+                    <p class="text-gray-600">Python, React, Next.js, Node.js, MongoDB, PostgreSQL, AWS, Docker, Flutter, AI/ML frameworks, and modern DevOps tools.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What makes your approach unique?</h3>
+                    <p class="text-gray-600">Our focus on AI-driven solutions, agile development practices, transparent communication, and building long-term partnerships with continuous innovation.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What are the expected outcomes?</h3>
+                    <p class="text-gray-600">Fully functional applications, improved operational efficiency, scalable infrastructure, detailed documentation, training materials, and ongoing technical support.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What is the typical timeline?</h3>
+                    <p class="text-gray-600">Projects range from 4-8 weeks for MVP development to 6-12 months for enterprise solutions, with iterative delivery every 2-3 weeks.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">What are the client responsibilities?</h3>
+                    <p class="text-gray-600">Provide clear requirements, business logic, necessary data access, timely feedback during development cycles, and user acceptance testing participation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Build Bold. Launch Smart.</h2>
+            <p class="text-xl mb-8">Let's turn your vision into software that scales.</p>
+            <button class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors">
+                Start Your Project Today
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 p-2 rounded-lg">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                        </div>
+                        <span class="ml-2 font-bold text-xl">VertexSlab</span>
+                    </div>
+                    <p class="text-gray-400">Building innovative software solutions for the future.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Custom Development</li>
+                        <li>Mobile Apps</li>
+                        <li>AI Solutions</li>
+                        <li>UI/UX Design</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>About Us</li>
+                        <li>Team</li>
+                        <li>Careers</li>
+                        <li>Contact</li>
