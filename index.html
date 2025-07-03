@@ -96,6 +96,110 @@
         }
 
         
+            @keyframes scroll {
+                0% { 
+                    transform: translateX(0); 
+                }
+                100% { 
+                    transform: translateX(calc(-50%)); 
+                }
+            }
+        
+            .animate-scroll {
+                animation: scroll 45s linear infinite;
+                will-change: transform;
+            }
+        
+            .service-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                
+            }
+        
+            .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        
+            .infinite-scroll-container {
+                width: 100%;
+                position: relative;
+            }
+        
+            .infinite-scroll-track {
+                white-space: nowrap;
+            }
+        
+            /* Mobile optimizations */
+            @media (max-width: 768px) {
+                .animate-scroll {
+                    animation: scroll 35s linear infinite;
+                }
+                
+                .service-card:hover {
+                    transform: translateY(-4px);
+                }
+            }
+        
+            /* Pause animation on hover for better UX */
+            .infinite-scroll-container:hover .animate-scroll {
+                animation-play-state: paused;
+            }
+        
+                /* Add these styles to fix the text responsiveness and cutoff issues */
+                .service-card {
+                    display: flex;
+                    flex-direction: column;
+                    height: 70% !important; /* Ensure full height */
+                }
+
+                .service-card-1 {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%; /* Ensure full height */
+                }
+            
+                .service-card > div:last-child { /* Target the card content div */
+                    flex: 1; /* Allow content to grow */
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 0; /* Fix for flexbox overflow */
+                }
+            
+                .service-card p {
+                    white-space: normal !important; /* Force text wrapping */
+                    word-break: break-word; /* Break long words if needed */
+                    overflow-wrap: break-word; /* Modern alternative */
+                    flex-grow: 1; /* Allow text to expand */
+                    overflow: hidden; /* Prevent overflow */
+                }
+            
+                /* Adjust text sizes for different screens */
+                @media (max-width: 768px) {
+                    .service-card h2 {
+                        font-size: 1rem !important;
+                        margin-bottom: 0.5rem !important;
+                    }
+                    .service-card p {
+                        font-size: 0.875rem !important;
+                        line-height: 1.4 !important;
+                    }
+                }
+            
+                @media (max-width: 640px) {
+                    .service-card h2 {
+                        font-size: 0.9375rem !important;
+                    }
+                    .service-card p {
+                        font-size: 0.8125rem !important;
+                    }
+                }
+        
+            
+        
+
+        
     </style>
 </head>
 <body class="font-sans bg-gray-900 text-white">
@@ -272,7 +376,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Service 1 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-blue-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-blue-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-code"></i>
                 </div>
@@ -281,7 +385,7 @@
             </div>
             
             <!-- Service 2 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-purple-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-purple-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-chess-knight"></i>
                 </div>
@@ -290,7 +394,7 @@
             </div>
             
             <!-- Service 3 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-indigo-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-indigo-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-chart-line"></i>
                 </div>
@@ -299,7 +403,7 @@
             </div>
             
             <!-- Service 4 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-headset"></i>
                 </div>
@@ -308,7 +412,7 @@
             </div>
             
             <!-- Service 5 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-flask"></i>
                 </div>
@@ -317,7 +421,7 @@
             </div>
             
             <!-- Service 6 -->
-            <div class="service-card bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3">
+            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3">
                 <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-digital-tachograph"></i>
                 </div>
@@ -930,57 +1034,7 @@
     </div>
 </section>
 
-<style>
-    @keyframes scroll {
-        0% { 
-            transform: translateX(0); 
-        }
-        100% { 
-            transform: translateX(calc(-50%)); 
-        }
-    }
 
-    .animate-scroll {
-        animation: scroll 45s linear infinite;
-        will-change: transform;
-    }
-
-    .service-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .service-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-
-    .infinite-scroll-container {
-        width: 100%;
-        position: relative;
-    }
-
-    .infinite-scroll-track {
-        white-space: nowrap;
-    }
-
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-        .animate-scroll {
-            animation: scroll 35s linear infinite;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-4px);
-        }
-    }
-
-    /* Pause animation on hover for better UX */
-    .infinite-scroll-container:hover .animate-scroll {
-        animation-play-state: paused;
-    }
-</style>
 
 
     <!-- CTA Section -->
@@ -1011,7 +1065,12 @@
                         Innovating digital solutions to drive business growth and transformation.
                     </p>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="https://x.com" class="text-gray-400 hover:text-blue-400 transition mt-1" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" fill="currentColor" class="w-5 h-4">
+                              <path d="M707.444 516.121L1156.36 0H1051.74L660.826 455.074L360.29 0H0L476.348 693.83L0 1227H104.726L526.167 738.965L839.71 1227H1200L707.444 516.121ZM574.555 674.236L532.184 616.525L171.323 84.03H322.835L615.547 517.968L657.917 575.679L1046.8 1144.88H894.759L574.555 674.236Z"/>
+                            </svg>
+                          </a>
+                          
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
@@ -1021,22 +1080,22 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Services</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Custom Software</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Mobile App Development</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Cloud Solutions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Data Analytics</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">UI/UX Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Software Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Revenue Optimization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Conslting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Research and Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Digitization</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-white font-semibold mb-4">Company</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Our Team</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Contact</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition">About Us</a></li>
+                        <li><a href="#work" class="text-gray-400 hover:text-blue-400 transition">Our Work</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition">Services</a></li>
+                        <li><a href="FAQ" class="text-gray-400 hover:text-blue-400 transition">FAQs</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition">Contact</a></li>
                     </ul>
                 </div>
                 
