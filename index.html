@@ -12,6 +12,17 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        vertex: {
+                            navy: '#0f172a',
+                            dark: '#1e293b',
+                            blue: '#2563eb',
+                            cyan: '#06b6d4',
+                            purple: '#7e22ce',
+                            light: '#f8fafc',
+                            gray: '#e2e8f0'
+                        }
+                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
@@ -201,6 +212,23 @@
 
         
     </style>
+    <style>
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(15px) translateX(-15px); }
+        }
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(20px); }
+        }
+        .animate-float1 { animation: float1 8s ease-in-out infinite; }
+        .animate-float2 { animation: float2 10s ease-in-out infinite; }
+        .animate-float3 { animation: float3 12s ease-in-out infinite; }
+    </style>
 </head>
 <body class="font-sans bg-gray-900 text-white">
     <!-- Navigation -->
@@ -325,12 +353,12 @@
 
 
 
-   <!-- About Section -->
-<section id="about" class="py-20 bg-gray-900">
+<!-- About Section -->
+<section id="about" class="py-20 bg-gray-900"> 
     <div class="container mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-12">
             <div class="lg:w-1/2">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                <img src="/img/about-img.webp" 
                      alt="Our Team" 
                      class="rounded-xl shadow-2xl hover:scale-[1.02] transition-transform duration-500">
             </div>
@@ -367,71 +395,85 @@
 </section>
 
     <!-- Services Section -->
-<section id="services" class="py-20 bg-gray-800">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">We provide comprehensive digital solutions to transform your business</p>
-        </div>
+    <section id="services" class="py-20 bg-white relative overflow-hidden">
+        <!-- Floating background elements - now more visible on white -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter blur-1xl opacity-1 animate-float1"></div>
+        <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter blur-1xl opacity-1 animate-float2"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-blue-600 rounded-full filter blur-1xl opacity-1 animate-float3"></div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-blue-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3 class="text-2xl font-semibold mb-4">Software Development</h3>
-                <p class="text-gray-300">Bespoke software solutions engineered to streamline operations, enhance productivity, and accelerate your business objectives through customized digital tools.</p>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We provide comprehensive digital solutions to transform your business</p>
             </div>
             
-            <!-- Service 2 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-purple-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-chess-knight"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-blue-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Software Development</h3>
+                    <p class="text-gray-300">Bespoke software solutions engineered to streamline operations, enhance productivity, and accelerate your business objectives.</p>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Disruptive Strategy</h3>
-                <p class="text-gray-300">Innovative business frameworks that challenge conventional models, positioning your organization for market leadership and sustainable competitive advantage.</p>
-            </div>
-            
-            <!-- Service 3 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-indigo-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-chart-line"></i>
+                
+                <!-- Service 2 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-purple-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -top-10 -left-10 w-28 h-28 bg-blue-300 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-chess-knight"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Disruptive Strategy</h3>
+                    <p class="text-gray-300">Innovative business frameworks that challenge conventional models for sustainable competitive advantage.</p>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Revenue Optimization</h3>
-                <p class="text-gray-300">Data-driven methodologies to maximize profitability through enhanced operational efficiency, pricing strategies, and revenue stream diversification.</p>
-            </div>
-            
-            <!-- Service 4 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-headset"></i>
+                
+                <!-- Service 3 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-indigo-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -bottom-5 -left-5 w-24 h-24 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Revenue Optimization</h3>
+                    <p class="text-gray-300">Data-driven methodologies to maximize profitability through enhanced operational efficiency.</p>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Consulting</h3>
-                <p class="text-gray-300">Expert guidance and strategic insights to navigate digital transformation challenges and capitalize on emerging technological opportunities.</p>
-            </div>
-            
-            <!-- Service 5 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-flask"></i>
+                
+                <!-- Service 4 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Consulting</h3>
+                    <p class="text-gray-300">Expert guidance to navigate digital transformation challenges and opportunities.</p>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Research & Development</h3>
-                <p class="text-gray-300">Cutting-edge technological exploration and innovation initiatives to future-proof your business and maintain industry relevance.</p>
-            </div>
-            
-            <!-- Service 6 -->
-            <div class="service-card-1 bg-gray-700 rounded-xl p-8 transition-all duration-500 hover:bg-gray-600 hover:shadow-2xl hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3">
-                <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                    <i class="fas fa-digital-tachograph"></i>
+                
+                <!-- Service 5 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute bottom-0 right-0 w-32 h-32 bg-blue-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Research & Development</h3>
+                    <p class="text-gray-300">Cutting-edge technological exploration to future-proof your business.</p>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Digitization</h3>
-                <p class="text-gray-300">Comprehensive modernization of legacy systems and processes to digital platforms, enhancing accessibility, efficiency, and scalability.</p>
+                
+                <!-- Service 6 -->
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-28 h-28 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-digital-tachograph"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Digitization</h3>
+                    <p class="text-gray-300">Modernization of legacy systems to digital platforms for better efficiency.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    
 
+
+    
     <!-- Solutions Section -->
 <section id="solutions" class="py-20 bg-gray-900">
     <div class="container mx-auto px-6">
@@ -489,7 +531,7 @@
 </section>
 
     <!-- Our Work Section -->
-    <section id="work" class="py-20 bg-gray-800">
+    <section id="work" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Work</h2>
@@ -499,25 +541,26 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="group relative overflow-hidden rounded-xl h-64">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                    <img src="/img/dept-of-survey.png" 
                          alt="Healthcare App" 
                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-2xl font-semibold mb-2">HealthTrack Pro</h3>
-                        <p class="text-gray-300 mb-4">A comprehensive healthcare management platform for clinics and hospitals.</p>
-                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study →</a>
+                        <h3 class="text-2xl font-semibold mb-2">Survey Digitization</h3>
+                        <p class="text-gray-300 mb-4">A comprehensive digitization of Enugu state survey department.</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">Visit →</a>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
                 <div class="group relative overflow-hidden rounded-xl h-64">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" 
+                    <img src="/img/CDE-REGISTRY.png" 
                          alt="Finance Dashboard" 
                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-2xl font-semibold mb-2">FinEdge Analytics</h3>
-                        <p class="text-gray-300 mb-4">AI-powered financial dashboard for investment firms and banks.</p>
-                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study →</a>
+                        <h3 class="text-2xl font-semibold mb-2">CDE Registry</h3>
+                        <p class="text-gray-300 mb-4">A web-based registry system application for the Catholic Diocese of Enugu.
+                        </p>
+                        <a href="https://cderegistry.org.ng" class="text-blue-400 hover:text-blue-300 font-medium">Visit →</a>
                     </div>
                 </div>
                 
@@ -545,16 +588,23 @@
     
 
     <!-- Testimonials Section -->
-    <section class="py-20 bg-gray-800">
+    <section class="py-20 bg-white relative overflow-hidden">
+
+        <!-- Floating background elements - now more visible on white -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter blur-1xl opacity-1 animate-float1"></div>
+        <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter blur-1xl opacity-1 animate-float2"></div>
+        <div class="absolute bottom-0 left-1/2 w-80 h-80 bg-blue-600 rounded-full filter blur-1xl opacity-1 animate-float3"></div>
+
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto text-gray-800">Don't just take our word for it - hear from our satisfied clients</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-700 p-8 rounded-xl">
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -568,9 +618,9 @@
                         "Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made."
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
+                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
-                        </div>
+                        </div> -->
                         <div>
                             <h4 class="font-semibold">Chiamaka Emem</h4>
                             <p class="text-gray-400 text-sm">CEO, Opium Digitals</p>
@@ -579,7 +629,8 @@
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-700 p-8 rounded-xl">
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -593,9 +644,9 @@
                         "The e-commerce platform Vertex Labs built for us has increased our online sales by 120% in just six months. Their attention to detail and user experience focus made all the difference."
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
+                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-full h-full object-cover">
-                        </div>
+                        </div> -->
                         <div>
                             <h4 class="font-semibold">Michael Chen</h4>
                             <p class="text-gray-400 text-sm">Director, UrbanStyle</p>
@@ -604,7 +655,8 @@
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-700 p-8 rounded-xl">
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -618,9 +670,9 @@
                         "Working with Vertex Labs on our financial analytics dashboard was a game-changer. They understood our complex requirements and delivered a solution that's both powerful and easy to use."
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
+                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez" class="w-full h-full object-cover">
-                        </div>
+                        </div> -->
                         <div>
                             <h4 class="font-semibold">Emily Rodriguez</h4>
                             <p class="text-gray-400 text-sm">CFO, CapitalEdge</p>
@@ -634,7 +686,7 @@
 
 
  <!-- FAQ Section -->
- <section id="FAQ" class="py-20 bg-gray-800">
+ <section id="FAQ" class="py-20 bg-gray-900">
     <div class="container mx-auto px-6">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
         
@@ -812,84 +864,112 @@
 </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Get In Touch</h2>
-                    <p class="text-gray-300 mb-8 text-lg">
-                        Ready to start your project? Have questions about our services? Contact us today and our team will get back to you within 24 hours.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="text-blue-400 text-xl mr-4 mt-1">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Our Office</h4>
-                                <p class="text-gray-400">123 Tech Park Drive, Silicon Valley, CA 94025</p>
-                            </div>
+<section id="contact" class="py-20 bg-white relative overflow-hidden">
+    <!-- Floating background elements - now behind content -->
+    <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter  opacity-1 animate-float1 z-0"></div>
+    <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter  opacity-1 animate-float2 z-0"></div>
+    <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-blue-600 rounded-full filter  opacity-1 animate-float3 z-0"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Get In Touch</h2>
+                <p class="text-gray-900 mb-8 text-lg">
+                    Ready to start your project? Have questions about our services? Contact us today and our team will get back to you within 24 hours.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-blue-400 text-xl mr-4 mt-1">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Email Us</h4>
-                                <p class="text-gray-400">info@vertexlabs.com</p>
-                                <p class="text-gray-400">support@vertexlabs.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-blue-400 text-xl mr-4 mt-1">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Call Us</h4>
-                                <p class="text-gray-400">+1 (555) 123-4567</p>
-                                <p class="text-gray-400">Mon-Fri: 9am-6pm EST</p>
-                            </div>
+                        <div>
+                            <h4 class="font-semibold mb-1 text-gray-900">Our Office</h4>
+                            <p class="text-gray-800">123 Tech Park Drive, Silicon Valley, CA 94025</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <form class="bg-gray-800 p-8 rounded-xl">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-gray-300 mb-2">Name</label>
-                                <input type="text" id="name" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-300 mb-2">Email</label>
-                                <input type="email" id="email" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="mb-6">
-                            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
-                            <input type="text" id="subject" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div>
+                            <h4 class="font-semibold mb-1 text-gray-900">Email Us</h4>
+                            <p class="text-gray-800">info@vertexlabs.com</p>
+                            <p class="text-gray-800">support@vertexlabs.com</p>
                         </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-300 mb-2">Message</label>
-                            <textarea id="message" rows="5" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt"></i>
                         </div>
-                        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition">
-                            Send Message
-                        </button>
-                    </form>
+                        <div>
+                            <h4 class="font-semibold mb-1 text-gray-900">Call Us</h4>
+                            <p class="text-gray-800">+1 (555) 123-4567</p>
+                            <p class="text-gray-800">Mon-Fri: 9am-6pm EST</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-lg font-semibold text-vertex-navy mb-4">Follow Us</h4>
+                    <div class="flex items-start space-x-4">
+                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                          
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" fill="currentColor" class="w-5 h-4">
+                                  <path d="M707.444 516.121L1156.36 0H1051.74L660.826 455.074L360.29 0H0L476.348 693.83L0 1227H104.726L526.167 738.965L839.71 1227H1200L707.444 516.121ZM574.555 674.236L532.184 616.525L171.323 84.03H322.835L615.547 517.968L657.917 575.679L1046.8 1144.88H894.759L574.555 674.236Z"/>
+                                </svg>
+                              
+                        </a>
+                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+            
+            <div class="lg:w-1/2">
+                <form class="bg-gray-800 p-8 rounded-xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-white mb-2">Name</label>
+                            <input type="text" id="name" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-white mb-2">Email</label>
+                            <input type="email" id="email" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-white mb-2">Subject</label>
+                        <input type="text" id="subject" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-white mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- Services That Drive Real Results -->
-<section class="py-12 md:py-16 bg-gray-50 relative overflow-hidden">
+<section class="py-12 md:py-16 bg-gray-900 relative overflow-hidden">
     <!-- Section Header -->
     <div class="container mx-auto px-4 text-center mb-8 md:mb-12">
-        <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h1 class="text-2xl md:text-4xl font-bold  mb-4 text-white">
             Services That Drive <span class="text-blue-600">Real Results</span>
         </h1>
     </div>
@@ -1046,7 +1126,7 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button class="bg-transparent border-2 border-white text-white hover:bg-blue-700 font-semibold px-8 py-3 rounded-full transition transform hover:scale-105">
-                    Call Us Now
+                   <a href="#contact">Contact Us</a> 
                 </button>
             </div>
         </div>
@@ -1061,7 +1141,7 @@
                         <img src="/img/logo.png" alt="Vertex logo" class="h-8 w-auto">
                         vertex<span class="text-white">labs</span>
                       </div>
-                    <p class="text-gray-400">
+                    <p class="text-gray-400 mt-2">
                         Innovating digital solutions to drive business growth and transformation.
                     </p>
                     <div class="flex space-x-4 mt-6">
@@ -1082,7 +1162,7 @@
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Software Development</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Revenue Optimization</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Conslting</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Consulting</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Research and Development</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Digitization</a></li>
                     </ul>

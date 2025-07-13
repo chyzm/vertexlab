@@ -1,350 +1,635 @@
+here is the incomplete design, 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VertexSlab - Innovative Software Solutions</title>
+    <title>Vertex Labs - Digital Innovation & Technology Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
+    <link rel="icon" type="image/png" href="/img/logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        vertex: {
+                            navy: '#0f172a',
+                            dark: '#1e293b',
+                            blue: '#2563eb',
+                            cyan: '#06b6d4',
+                            purple: '#7e22ce',
+                            light: '#f8fafc',
+                            gray: '#e2e8f0'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1.5s ease-in-out',
+                        'gradient-x': 'gradientX 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        gradientX: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
+        .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
-        .tech-icon {
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-        
-        .tech-icon:hover {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .fade-in {
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
+        .animate-gradient-x {
+            background-size: 200% 200%;
+            animation: gradientX 4s ease infinite;
         }
         
-        .mockup-screen {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        @keyframes gradientX {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .animation-delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .animation-delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .animation-delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes scroll {
+            0% { 
+                transform: translateX(0); 
+            }
+            100% { 
+                transform: translateX(calc(-50%)); 
+            }
+        }
+    
+        .animate-scroll {
+            animation: scroll 45s linear infinite;
+            will-change: transform;
+        }
+    
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    
+        .infinite-scroll-container {
+            width: 100%;
+            position: relative;
+        }
+    
+        .infinite-scroll-track {
+            white-space: nowrap;
+        }
+    
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .animate-scroll {
+                animation: scroll 35s linear infinite;
+            }
+            
+            .service-card:hover {
+                transform: translateY(-4px);
+            }
+        }
+    
+        /* Pause animation on hover for better UX */
+        .infinite-scroll-container:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+    
+        /* Add these styles to fix the text responsiveness and cutoff issues */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            height: 70% !important;
+        }
+
+        .service-card-1 {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    
+        .service-card > div:last-child {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+    
+        .service-card p {
+            white-space: normal !important;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+    
+        /* Adjust text sizes for different screens */
+        @media (max-width: 768px) {
+            .service-card h2 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            .service-card p {
+                font-size: 0.875rem !important;
+                line-height: 1.4 !important;
+            }
+        }
+    
+        @media (max-width: 640px) {
+            .service-card h2 {
+                font-size: 0.9375rem !important;
+            }
+            .service-card p {
+                font-size: 0.8125rem !important;
+            }
+        }
+        
+        /* Professional shadow effects */
+        .professional-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .hover-professional-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Elegant border transitions */
+        .border-transition {
+            transition: border-color 0.3s ease;
+        }
+        
+        /* Subtle glow effect */
+        .subtle-glow {
+            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.3));
         }
     </style>
 </head>
-<body class="bg-white">
+<body class="font-sans bg-vertex-navy text-vertex-light">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="bg-blue-500 p-2 rounded-lg">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                        </svg>
-                    </div>
-                    <span class="ml-2 font-bold text-xl">VertexSlab</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
-                    <a href="#process" class="text-gray-700 hover:text-blue-600 transition-colors">Process</a>
-                    <a href="#faq" class="text-gray-700 hover:text-blue-600 transition-colors">FAQ</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
-                </div>
-                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                    Get Started
-                </button>
+    <nav class="container mx-auto px-6 py-4 sticky top-0 z-50 bg-vertex-navy bg-opacity-90 backdrop-blur-sm border-b border-vertex-dark">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center text-2xl font-bold text-vertex-blue">
+                <img src="/img/logo.png" alt="Vertex logo" class="h-8 w-auto">
+                vertex<span class="text-vertex-light">labs</span>
+            </div>
+              
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-vertex-gray hover:text-vertex-blue transition">Home</a>
+                <a href="#about" class="text-vertex-gray hover:text-vertex-blue transition">About</a>
+                <a href="#services" class="text-vertex-gray hover:text-vertex-blue transition">Services</a>
+                <a href="#solutions" class="text-vertex-gray hover:text-vertex-blue transition">Solutions</a>
+                <a href="#work" class="text-vertex-gray hover:text-vertex-blue transition">Our Work</a>
+                <a href="#FAQ" class="text-vertex-gray hover:text-vertex-blue transition">FAQs</a>
+                <a href="#contact" class="text-vertex-gray hover:text-vertex-blue transition">Contact</a>
+                <a href="#contact" class="bg-vertex-blue hover:bg-vertex-cyan text-white px-4 py-2 rounded-md transition hover-professional-shadow">Get Quote</a>
+            </div>
+            <button class="md:hidden focus:outline-none text-vertex-gray" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden pt-4" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-vertex-gray hover:text-vertex-blue transition">Home</a>
+                <a href="#about" class="text-vertex-gray hover:text-vertex-blue transition">About</a>
+                <a href="#services" class="text-vertex-gray hover:text-vertex-blue transition">Services</a>
+                <a href="#solutions" class="text-vertex-gray hover:text-vertex-blue transition">Solutions</a>
+                <a href="#work" class="text-vertex-gray hover:text-vertex-blue transition">Our Work</a>
+                <a href="#FAQ" class="text-vertex-gray hover:text-vertex-blue transition">FAQs</a>
+                <a href="#contact" class="text-vertex-gray hover:text-vertex-blue transition">Contact</a>
+                <a href="#contact" class="bg-vertex-blue hover:bg-vertex-cyan text-white px-4 py-2 rounded-md transition text-center">Get Quote</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="text-white space-y-6">
-                <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
-                    WE ARE BUILDING<br>
-                    <span class="text-blue-100">SOFTWARE</span> TO HELP
+    <section id="home" class="min-h-screen flex items-center justify-center overflow-hidden relative hero-gradient">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden z-0">
+            <!-- Floating circles -->
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-vertex-blue rounded-full opacity-10 blur-3xl animate-float animation-delay-100"></div>
+            <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-vertex-purple rounded-full opacity-10 blur-3xl animate-float animation-delay-300"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-60 h-60 bg-vertex-cyan rounded-full opacity-10 blur-3xl animate-float animation-delay-500"></div>
+            
+            <!-- Grid pattern -->
+            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==')]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 py-20 text-center relative z-10">
+            <!-- Headline with staggered animation -->
+            <div class="overflow-hidden mb-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 opacity-10 text-center px-6">
+                    VERTEX LABS
                 </h1>
-                <p class="text-xl text-blue-100 max-w-lg">
-                    Vertex crafts software solutions that fuel innovation, efficiency, and growth for businesses in an ever-evolving digital world.
-                </p>
-                <div class="flex space-x-4">
-                    <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Get Started
-                    </button>
-                    <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                        Learn More
-                    </button>
-                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="block animate-fade-in-up text-vertex-light drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">THINK IN</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-vertex-blue to-vertex-cyan animate-gradient-x drop-shadow-[0_0_10px_rgba(167,139,250,0.8)]">MOTION</span>
+                </h1>
             </div>
-            <div class="relative">
-                <div class="floating">
-                    <div class="mockup-screen p-6 relative">
-                        <!-- Dashboard mockup -->
-                        <div class="bg-white rounded-lg p-4 mb-4">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex space-x-2">
-                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                                </div>
-                                <div class="text-gray-400 text-sm">Dashboard</div>
-                            </div>
-                            <div class="grid grid-cols-3 gap-4 mb-4">
-                                <div class="bg-blue-100 p-3 rounded-lg">
-                                    <div class="text-blue-600 font-bold text-lg">247</div>
-                                    <div class="text-gray-600 text-sm">Projects</div>
-                                </div>
-                                <div class="bg-green-100 p-3 rounded-lg">
-                                    <div class="text-green-600 font-bold text-lg">98%</div>
-                                    <div class="text-gray-600 text-sm">Success</div>
-                                </div>
-                                <div class="bg-purple-100 p-3 rounded-lg">
-                                    <div class="text-purple-600 font-bold text-lg">24/7</div>
-                                    <div class="text-gray-600 text-sm">Support</div>
-                                </div>
-                            </div>
-                            <!-- Chart placeholder -->
-                            <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-32 rounded-lg mb-4 flex items-end justify-center pb-4">
-                                <div class="flex space-x-2">
-                                    <div class="bg-white/30 w-4 h-16 rounded"></div>
-                                    <div class="bg-white/50 w-4 h-20 rounded"></div>
-                                    <div class="bg-white/70 w-4 h-12 rounded"></div>
-                                    <div class="bg-white/90 w-4 h-24 rounded"></div>
-                                    <div class="bg-white w-4 h-18 rounded"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Side panel -->
-                        <div class="absolute -right-6 top-12 bg-white rounded-lg p-4 shadow-lg w-48">
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-blue-500 rounded-full"></div>
-                                    <div>
-                                        <div class="font-semibold text-sm">Team Meeting</div>
-                                        <div class="text-gray-500 text-xs">2:00 PM</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-green-500 rounded-full"></div>
-                                    <div>
-                                        <div class="font-semibold text-sm">Code Review</div>
-                                        <div class="text-gray-500 text-xs">4:30 PM</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            
+            <!-- Subheading -->
+            <p class="text-xl md:text-2xl text-vertex-gray mb-10 animate-fade-in-up" style="animation-delay: 0.3s;">
+                We Create, We Develop, We Inspire
+            </p>
+            
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
+                <button class="bg-vertex-blue hover:bg-vertex-cyan text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover-professional-shadow">
+                    Get Started
+                </button>
+                <button class="bg-transparent border-2 border-vertex-light hover:border-vertex-blue text-vertex-light hover:text-vertex-blue font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Learn More
+                </button>
+            </div>
+            
+            <!-- Animated features -->
+            <div class="mt-20 flex flex-wrap justify-center gap-4 sm:gap-8 animate-fade-in" style="animation-delay: 0.9s;">
+                <div class="flex items-center gap-3 px-4 py-2 rounded-full bg-vertex-dark bg-opacity-50 backdrop-blur-sm">
+                    <div class="w-10 h-10 bg-vertex-blue rounded-full flex items-center justify-center animate-pulse">
+                        <i class="fas fa-paint-brush text-white"></i>
                     </div>
+                    <span class="text-vertex-light font-medium">Creative Design</span>
+                </div>
+                <div class="flex items-center gap-3 px-4 py-2 rounded-full bg-vertex-dark bg-opacity-50 backdrop-blur-sm">
+                    <div class="w-10 h-10 bg-vertex-purple rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.2s;">
+                        <i class="fas fa-bolt text-white"></i>
+                    </div>
+                    <span class="text-vertex-light font-medium">Fast Development</span>
+                </div>
+                <div class="flex items-center gap-3 px-4 py-2 rounded-full bg-vertex-dark bg-opacity-50 backdrop-blur-sm">
+                    <div class="w-10 h-10 bg-vertex-cyan rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.4s;">
+                        <i class="fas fa-lightbulb text-white"></i>
+                    </div>
+                    <span class="text-vertex-light font-medium">Innovation First</span>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- How it Works Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">How it Works</h2>
-            <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
-            <p class="text-gray-600 max-w-3xl mx-auto mb-16">
-                At Vertex, we provide innovative technology solutions designed to help businesses scale and succeed through a streamlined process built for results.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-blue-600 font-bold text-xl">1</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Plan & Prototype</h3>
-                    <p class="text-gray-600">We begin by understanding your vision, goals, and users. Through collaborative workshops and research, we define the scope and create interactive prototypes.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-green-600 font-bold text-xl">2</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Build & Iterate</h3>
-                    <p class="text-gray-600">Our development team brings the prototype to reality using modern frameworks and agile methods. We build in sprints and test continuously.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-purple-600 font-bold text-xl">3</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Launch & Scale</h3>
-                    <p class="text-gray-600">We deploy your solution with robust infrastructure and provide ongoing support to ensure your software scales with your business growth.</p>
-                </div>
-            </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce z-10">
+            <a href="#services" class="text-vertex-light hover:text-vertex-blue transition">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-xl text-white">
-                    <h3 class="text-2xl font-bold mb-4">Innovative</h3>
-                    <p>From AI-powered applications to transformative technology that bridges business challenges.</p>
+    <section id="about" class="py-20 bg-vertex-light">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Our Team" 
+                         class="rounded-xl professional-shadow hover:scale-[1.02] transition-transform duration-500">
                 </div>
-                <div class="bg-gradient-to-br from-green-500 to-teal-600 p-8 rounded-xl text-white">
-                    <h3 class="text-2xl font-bold mb-4">Scalable</h3>
-                    <p>Robust cloud infrastructure and systems that help businesses adapt, grow, and stay competitive.</p>
-                </div>
-                <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-xl text-white">
-                    <h3 class="text-2xl font-bold mb-4">Efficient</h3>
-                    <p>Aligning technology with real-world needs to create seamless digital experiences that drive success.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology Stack -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">What's Your Stack?</h2>
-            <p class="text-gray-600 mb-12">You have got a business, we have got brilliant minds. Leverage our squad of software engineers to bring ideas to life in whatever tech stack you need.</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">Py</div>
-                    <div class="text-sm font-medium">Python</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-black rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">N</div>
-                    <div class="text-sm font-medium">Next.js</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-green-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">M</div>
-                    <div class="text-sm font-medium">MongoDB</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-blue-400 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">R</div>
-                    <div class="text-sm font-medium">React</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-blue-600 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">P</div>
-                    <div class="text-sm font-medium">PostgreSQL</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-red-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">N</div>
-                    <div class="text-sm font-medium">NestJS</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-orange-500 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">A</div>
-                    <div class="text-sm font-medium">AWS</div>
-                </div>
-                <div class="tech-icon bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-blue-700 rounded-lg mx-auto mb-2 flex items-center justify-center text-white font-bold">D</div>
-                    <div class="text-sm font-medium">Docker</div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-vertex-navy">About Vertex Labs</h2>
+                    <p class="text-vertex-dark mb-6 text-lg">
+                        We are a team of passionate technologists, designers, and problem-solvers dedicated to creating digital solutions that drive business growth and innovation.
+                    </p>
+                    <p class="text-vertex-dark mb-6">
+                        Founded in 2015, Vertex Labs has grown from a small startup to a trusted partner for businesses across multiple industries and Government. Our approach combines technical expertise with creative thinking to deliver solutions that are both functional and beautiful.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white p-4 rounded-lg hover:bg-gradient-to-br from-vertex-blue to-vertex-cyan transition-all duration-500 hover-professional-shadow hover:-translate-y-2">
+                            <div class="text-vertex-blue text-3xl font-bold mb-2 hover:text-white transition-colors duration-500">50+</div>
+                            <div class="text-vertex-dark hover:text-white transition-colors duration-500">Clients Worldwide</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg hover:bg-gradient-to-br from-vertex-purple to-vertex-blue transition-all duration-500 hover-professional-shadow hover:-translate-y-2">
+                            <div class="text-vertex-blue text-3xl font-bold mb-2 hover:text-white transition-colors duration-500">100+</div>
+                            <div class="text-vertex-dark hover:text-white transition-colors duration-500">Projects Completed</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg hover:bg-gradient-to-br from-vertex-cyan to-vertex-blue transition-all duration-500 hover-professional-shadow hover:-translate-y-2">
+                            <div class="text-vertex-blue text-3xl font-bold mb-2 hover:text-white transition-colors duration-500">40+</div>
+                            <div class="text-vertex-dark hover:text-white transition-colors duration-500">Team Members</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg hover:bg-gradient-to-br from-vertex-blue to-vertex-purple transition-all duration-500 hover-professional-shadow hover:-translate-y-2">
+                            <div class="text-vertex-blue text-3xl font-bold mb-2 hover:text-white transition-colors duration-500">5</div>
+                            <div class="text-vertex-dark hover:text-white transition-colors duration-500">Years Experience</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Services That Drive Real Results</h2>
-            <div class="w-20 h-1 bg-blue-500 mx-auto mb-16"></div>
+    <section id="services" class="py-20 bg-vertex-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-vertex-light">Our Services</h2>
+                <p class="text-xl text-vertex-gray max-w-3xl mx-auto">We provide comprehensive digital solutions to transform your business</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">Custom Software Development</h3>
-                        <p class="text-gray-600">End-to-end development of web, mobile, or desktop apps tailored to your specific goals, workflows, and user needs.</p>
+                <!-- Service 1 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-vertex-blue transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Software Development</h3>
+                    <p class="text-vertex-gray">Bespoke software solutions engineered to streamline operations, enhance productivity, and accelerate your business objectives through customized digital tools.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-vertex-purple transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-chess-knight"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Disruptive Strategy</h3>
+                    <p class="text-vertex-gray">Innovative business frameworks that challenge conventional models, positioning your organization for market leadership and sustainable competitive advantage.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-vertex-cyan transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Revenue Optimization</h3>
+                    <p class="text-vertex-gray">Data-driven methodologies to maximize profitability through enhanced operational efficiency, pricing strategies, and revenue stream diversification.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Consulting</h3>
+                    <p class="text-vertex-gray">Expert guidance and strategic insights to navigate digital transformation challenges and capitalize on emerging technological opportunities.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Research & Development</h3>
+                    <p class="text-vertex-gray">Cutting-edge technological exploration and innovation initiatives to future-proof your business and maintain industry relevance.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card-1 bg-vertex-navy p-8 rounded-xl transition-all duration-500 hover:bg-opacity-80 hover-professional-shadow hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3">
+                    <div class="text-vertex-blue text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-digital-tachograph"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-vertex-light">Digitization</h3>
+                    <p class="text-vertex-gray">Comprehensive modernization of legacy systems and processes to digital platforms, enhancing accessibility, efficiency, and scalability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-20 bg-vertex-navy">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-vertex-light">Industry Solutions</h2>
+                <p class="text-xl text-vertex-gray max-w-3xl mx-auto">Tailored digital solutions for your industry's unique challenges</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Solution 1 -->
+                <div class="bg-vertex-dark rounded-xl overflow-hidden flex flex-col md:flex-row hover-professional-shadow hover:-translate-y-2 transition-all duration-500">
+                    <div class="md:w-1/3 bg-vertex-blue flex items-center justify-center p-6 hover:bg-vertex-cyan transition-colors duration-500">
+                        <i class="fas fa-heartbeat text-5xl text-white transform hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-vertex-light">Healthcare</h3>
+                        <p class="text-vertex-gray">Digital health platforms, telemedicine solutions, and medical data management systems.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">Staff Augmentation</h3>
-                        <p class="text-gray-600">Augment your tech team with top-tier developers to meet long-term goals—saving on sourcing, recruiting, and training overhead.</p>
+                
+                <!-- Solution 2 -->
+                <div class="bg-vertex-dark rounded-xl overflow-hidden flex flex-col md:flex-row hover-professional-shadow hover:-translate-y-2 transition-all duration-500">
+                    <div class="md:w-1/3 bg-vertex-purple flex items-center justify-center p-6 hover:bg-vertex-blue transition-colors duration-500">
+                        <i class="fas fa-university text-5xl text-white transform hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-vertex-light">Finance</h3>
+                        <p class="text-vertex-gray">Fintech solutions, banking platforms, and secure payment processing systems.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
-                        <p class="text-gray-600">Craft beautiful, intuitive interfaces that enhance user experience and convert users into loyal customers.</p>
+                
+                <!-- Solution 3 -->
+                <div class="bg-vertex-dark rounded-xl overflow-hidden flex flex-col md:flex-row hover-professional-shadow hover:-translate-y-2 transition-all duration-500">
+                    <div class="md:w-1/3 bg-vertex-cyan flex items-center justify-center p-6 hover:bg-vertex-blue transition-colors duration-500">
+                        <i class="fas fa-landmark text-5xl text-white transform hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-vertex-light">Government</h3>
+                        <p class="text-vertex-gray">Digital governance platforms, citizen engagement tools, and public service automation.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">AI & Automation Solutions</h3>
-                        <p class="text-gray-600">Use AI and automation to optimize tasks, personalize user experiences, and unlock new product capabilities.</p>
+                
+                <!-- Solution 4 -->
+                <div class="bg-vertex-dark rounded-xl overflow-hidden flex flex-col md:flex-row hover-professional-shadow hover:-translate-y-2 transition-all duration-500">
+                    <div class="md:w-1/3 bg-gradient-to-r from-vertex-blue to-vertex-cyan flex items-center justify-center p-6 hover:bg-gradient-to-r hover:from-vertex-purple hover:to-vertex-blue transition-colors duration-500">
+                        <i class="fas fa-graduation-cap text-5xl text-white transform hover:scale-110 transition-transform duration-300"></i>
                     </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">API & Systems Integration</h3>
-                        <p class="text-gray-600">Seamlessly connect third-party services and internal tools to streamline workflows and scale operations faster.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-br from-pink-500 to-pink-600"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">Mobile App Development</h3>
-                        <p class="text-gray-600">Deliver sleek, high-performance mobile apps for iOS, Android, or both—built to scale and delight users.</p>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-vertex-light">Education</h3>
+                        <p class="text-vertex-gray">E-learning platforms, LMS systems, and educational mobile applications.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-16">What Our Customers Are Saying</h2>
-            <div class="bg-white p-8 rounded-xl shadow-lg">
-                <div class="text-2xl text-gray-400 mb-4">"</div>
-                <p class="text-lg text-gray-700 mb-6">Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made.</p>
-                <div class="flex items-center justify-center space-x-4">
-                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">CE</div>
-                    <div>
-                        <div class="font-semibold">Chiamaka Emem</div>
-                        <div class="text-gray-500">CEO, Opium Digitals</div>
+    <!-- Our Work Section -->
+    <section id="work" class="py-20 bg-vertex-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-vertex-light">Our Work</h2>
+                <p class="text-xl text-vertex-gray max-w-3xl mx-auto">See how we've helped businesses transform through technology</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Healthcare App" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-2xl font-semibold mb-2 text-vertex-light">HealthTrack Pro</h3>
+                        <p class="text-vertex-gray mb-4">A comprehensive healthcare management platform for clinics and hospitals.</p>
+                        <a href="#" class="text-vertex-blue hover:text-vertex-cyan font-medium">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" 
+                         alt="Finance Dashboard" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-2xl font-semibold mb-2 text-vertex-light">FinEdge Analytics</h3>
+                        <p class="text-vertex-gray mb-4">AI-powered financial dashboard for investment firms and banks.</p>
+                        <a href="#" class="text-vertex-blue hover:text-vertex-cyan font-medium">View Case Study →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="E-commerce Platform" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-2xl font-semibold mb-2 text-vertex-light">ShopSphere</h3>
+                        <p class="text-vertex-gray mb-4">Custom e-commerce platform with AI-powered recommendations.</p>
+                        <a href="#" class="text-vertex-blue hover:text-vertex-cyan font-medium">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-vertex-blue text-vertex-blue hover:bg-vertex-blue hover:text-white font-semibold px-8 py-3 rounded-full transition hover-professional-shadow">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-vertex-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-vertex-light">What Our Clients Say</h2>
+                <p class="text-xl text-vertex-gray max-w-3xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-vertex-navy p-8 rounded-xl border-l-4 border-vertex-blue">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-vertex-gray mb-6 italic">
+                        "Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-vertex-light font-semibold">Sarah Johnson</h4>
+                            <p class="text-vertex-gray text-sm">CTO, HealthPlus Systems</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-vertex-navy p-8 rounded-xl border-l-4 border-vertex-purple">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-vertex-gray mb-6 italic">
+                        "The digital transformation strategy Vertex Labs implemented helped us reduce operational costs by 40% while improving customer satisfaction. Their team's technical expertise and strategic vision were invaluable to our success."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-vertex-light font-semibold">Michael Chen</h4>
+                            <p class="text-vertex-gray text-sm">CEO, FinEdge Capital</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-vertex-navy p-8 rounded-xl border-l-4 border-vertex-cyan">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-vertex-gray mb-6 italic">
+                        "From initial concept to final deployment, Vertex Labs demonstrated exceptional project management and technical skills. Our e-learning platform launched ahead of schedule and has already onboarded over 50,000 users in the first quarter."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-vertex-light font-semibold">Priya Patel</h4>
+                            <p class="text-vertex-gray text-sm">Director, EduTech Solutions</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -352,93 +637,374 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Frequently Asked Questions</h2>
-            <div class="space-y-6">
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What is this service?</h3>
-                    <p class="text-gray-600">We provide comprehensive software development services including custom applications, AI solutions, and digital transformation consulting to help businesses leverage technology for growth and efficiency.</p>
+    <section id="FAQ" class="py-20 bg-vertex-navy">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-vertex-light">Frequently Asked Questions</h2>
+                <p class="text-xl text-vertex-gray max-w-3xl mx-auto">Find answers to common questions about our services and process</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-4 border-b border-vertex-dark pb-4">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-vertex-light group-hover:text-vertex-blue transition">What industries do you specialize in?</h3>
+                        <span class="text-vertex-blue transform group-hover:rotate-180 transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="mt-2 text-vertex-gray">
+                        <p>While we work across various sectors, we have deep expertise in healthcare, finance, education, and government technology. Our team includes specialists who understand the unique regulatory and operational challenges of these industries.</p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What problem does it solve?</h3>
-                    <p class="text-gray-600">We address operational inefficiencies, outdated technology systems, scalability challenges, and the need for digital transformation in modern businesses.</p>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-4 border-b border-vertex-dark pb-4">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-vertex-light group-hover:text-vertex-blue transition">How do you approach project security?</h3>
+                        <span class="text-vertex-blue transform group-hover:rotate-180 transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="mt-2 text-vertex-gray">
+                        <p>Security is fundamental to our development process. We implement industry-standard protocols including encryption, regular penetration testing, and compliance with relevant standards (HIPAA, GDPR, PCI DSS as applicable). All team members undergo security training, and we conduct thorough code reviews.</p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">Who typically needs this service?</h3>
-                    <p class="text-gray-600">Startups, SMEs, and enterprises across industries like healthcare, fintech, e-commerce, and manufacturing who need custom software solutions or team augmentation.</p>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-4 border-b border-vertex-dark pb-4">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-vertex-light group-hover:text-vertex-blue transition">What's your typical project timeline?</h3>
+                        <span class="text-vertex-blue transform group-hover:rotate-180 transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="mt-2 text-vertex-gray">
+                        <p>Timelines vary based on project scope, but most engagements follow this structure:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>Discovery & Planning: 2-4 weeks</li>
+                                <li>Design Phase: 3-6 weeks</li>
+                                <li>Development: 8-16 weeks</li>
+                                <li>Testing & Deployment: 2-4 weeks</li>
+                            </ul>
+                            We provide a detailed timeline after our initial consultation.
+                        </p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What are the key components of this service?</h3>
-                    <p class="text-gray-600">Custom software development, UI/UX design, mobile apps, AI integration, cloud infrastructure, API development, and ongoing maintenance and support.</p>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-4 border-b border-vertex-dark pb-4">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-vertex-light group-hover:text-vertex-blue transition">Do you offer ongoing support?</h3>
+                        <span class="text-vertex-blue transform group-hover:rotate-180 transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="mt-2 text-vertex-gray">
+                        <p>Yes, we provide comprehensive maintenance and support packages tailored to your needs. Our support services include regular updates, performance monitoring, 24/7 incident response, and feature enhancements. Over 80% of our clients maintain an ongoing relationship with us post-launch.</p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">How is the service delivered?</h3>
-                    <p class="text-gray-600">We offer both project-based development and ongoing support through dedicated teams, using agile methodologies with cloud-based deployment and continuous integration.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What technologies do you use?</h3>
-                    <p class="text-gray-600">Python, React, Next.js, Node.js, MongoDB, PostgreSQL, AWS, Docker, Flutter, AI/ML frameworks, and modern DevOps tools.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What makes your approach unique?</h3>
-                    <p class="text-gray-600">Our focus on AI-driven solutions, agile development practices, transparent communication, and building long-term partnerships with continuous innovation.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What are the expected outcomes?</h3>
-                    <p class="text-gray-600">Fully functional applications, improved operational efficiency, scalable infrastructure, detailed documentation, training materials, and ongoing technical support.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What is the typical timeline?</h3>
-                    <p class="text-gray-600">Projects range from 4-8 weeks for MVP development to 6-12 months for enterprise solutions, with iterative delivery every 2-3 weeks.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-lg font-semibold mb-3">What are the client responsibilities?</h3>
-                    <p class="text-gray-600">Provide clear requirements, business logic, necessary data access, timely feedback during development cycles, and user acceptance testing participation.</p>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-4">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-vertex-light group-hover:text-vertex-blue transition">How do you handle intellectual property?</h3>
+                        <span class="text-vertex-blue transform group-hover:rotate-180 transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </button>
+                    <div class="mt-2 text-vertex-gray">
+                        <p>You retain full ownership of all intellectual property we create for your project. Our contracts clearly specify that all custom code, designs, and documentation created for your project belong exclusively to you. We can also sign NDAs and other confidentiality agreements as needed.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 gradient-bg">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h2 class="text-4xl font-bold mb-4">Build Bold. Launch Smart.</h2>
-            <p class="text-xl mb-8">Let's turn your vision into software that scales.</p>
-            <button class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors">
-                Start Your Project Today
-            </button>
+    <section class="py-20 bg-gradient-to-r from-vertex-blue to-vertex-cyan animate-gradient-x">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Transform Your Business?</h2>
+            <p class="text-xl text-white opacity-90 mb-10 max-w-3xl mx-auto">Let's discuss how Vertex Labs can help you achieve your digital transformation goals.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-vertex-blue hover:bg-vertex-navy hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover-professional-shadow">
+                    Get Started
+                </button>
+                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-vertex-blue font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-vertex-light">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-vertex-navy">Get In Touch</h2>
+                    <p class="text-vertex-dark mb-8 text-lg">Have a project in mind or want to learn more about our services? Reach out to our team—we'd love to hear from you.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-vertex-navy mb-1">Our Office</h4>
+                                <p class="text-vertex-dark">123 Tech Park Drive, Innovation District<br>San Francisco, CA 94107</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-vertex-navy mb-1">Email Us</h4>
+                                <p class="text-vertex-dark">info@vertexlabs.com<br>support@vertexlabs.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-vertex-blue text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-vertex-navy mb-1">Call Us</h4>
+                                <p class="text-vertex-dark">+1 (555) 123-4567<br>Mon-Fri, 9am-6pm PST</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="text-lg font-semibold text-vertex-navy mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <form class="bg-white p-8 rounded-xl professional-shadow">
+                        <div class="mb-6">
+                            <label for="name" class="block text-vertex-dark font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-vertex-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-vertex-blue focus:border-transparent">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-vertex-dark font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-vertex-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-vertex-blue focus:border-transparent">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-vertex-dark font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-vertex-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-vertex-blue focus:border-transparent">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-vertex-dark font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-vertex-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-vertex-blue focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-vertex-blue hover:bg-vertex-cyan text-white font-semibold px-6 py-3 rounded-lg transition hover-professional-shadow">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-vertex-navy text-vertex-gray py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-500 p-2 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                        </div>
-                        <span class="ml-2 font-bold text-xl">VertexSlab</span>
+                    <div class="flex items-center text-2xl font-bold text-vertex-blue mb-4">
+                        <img src="/img/logo.png" alt="Vertex logo" class="h-8 w-auto">
+                        vertex<span class="text-vertex-light">labs</span>
                     </div>
-                    <p class="text-gray-400">Building innovative software solutions for the future.</p>
+                    <p class="mb-4">Innovative digital solutions to transform your business and drive growth in the digital age.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-vertex-gray hover:text-vertex-blue transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-vertex-gray hover:text-vertex-blue transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-vertex-gray hover:text-vertex-blue transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-vertex-gray hover:text-vertex-blue transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div>
-                    <h3 class="font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Custom Development</li>
-                        <li>Mobile Apps</li>
-                        <li>AI Solutions</li>
-                        <li>UI/UX Design</li>
+                    <h3 class="text-lg font-semibold text-vertex-light mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-vertex-blue transition">Software Development</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Disruptive Strategy</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Revenue Optimization</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Consulting</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Research & Development</a></li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h3 class="font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>About Us</li>
-                        <li>Team</li>
-                        <li>Careers</li>
-                        <li>Contact</li>
+                    <h3 class="text-lg font-semibold text-vertex-light mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-vertex-blue transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Our Team</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-vertex-light mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-vertex-blue transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-vertex-blue transition">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-vertex-dark mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm mb-4 md:mb-0">© 2023 Vertex Labs. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm hover:text-vertex-blue transition">Privacy Policy</a>
+                    <a href="#" class="text-sm hover:text-vertex-blue transition">Terms of Service</a>
+                    <a href="#" class="text-sm hover:text-vertex-blue transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-vertex-blue text-white p-3 rounded-full opacity-0 invisible transition-all duration-300 hover:bg-vertex-cyan hover-professional-shadow">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('#FAQ button');
+        
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const content = item.nextElementSibling;
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.nextElementSibling.style.display = 'none';
+                        otherItem.querySelector('i').classList.remove('fa-chevron-up');
+                        otherItem.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Toggle current item
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
+                } else {
+                    content.style.display = 'block';
+                    item.querySelector('i').classList.remove('fa-chevron-down');
+                    item.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
