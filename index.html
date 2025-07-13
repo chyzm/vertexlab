@@ -587,101 +587,91 @@
 
     
 
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-white relative overflow-hidden">
+   <!-- Testimonials Section -->
+<section class="py-20 bg-white relative overflow-hidden">
+    <!-- Floating background elements - behind content -->
+    <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter  opacity-1 animate-float1 z-0"></div>
+    <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter  opacity-1 animate-float2 z-0"></div>
+    <div class="absolute bottom-0 left-1/2 w-80 h-80 bg-blue-600 rounded-full filter  opacity-1 animate-float3 z-0"></div>
 
-        <!-- Floating background elements - now more visible on white -->
-        <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter blur-1xl opacity-1 animate-float1"></div>
-        <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter blur-1xl opacity-1 animate-float2"></div>
-        <div class="absolute bottom-0 left-1/2 w-80 h-80 bg-blue-600 rounded-full filter blur-1xl opacity-1 animate-float3"></div>
-
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto text-gray-800">Don't just take our word for it - hear from our satisfied clients</p>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h2>
+            <p class="text-xl text-gray-800 max-w-3xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-6 italic">
+                    "Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made."
+                </p>
+                <div class="flex items-center">
+                    <div>
+                        <h4 class="font-semibold">Chiamaka Emem</h4>
+                        <p class="text-gray-400 text-sm">CEO, Opium Digitals</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
-                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made."
-                    </p>
-                    <div class="flex items-center">
-                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
-                        </div> -->
-                        <div>
-                            <h4 class="font-semibold">Chiamaka Emem</h4>
-                            <p class="text-gray-400 text-sm">CEO, Opium Digitals</p>
-                        </div>
+            <!-- Testimonial 2 -->
+            <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
-                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "The e-commerce platform Vertex Labs built for us has increased our online sales by 120% in just six months. Their attention to detail and user experience focus made all the difference."
-                    </p>
-                    <div class="flex items-center">
-                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-full h-full object-cover">
-                        </div> -->
-                        <div>
-                            <h4 class="font-semibold">Michael Chen</h4>
-                            <p class="text-gray-400 text-sm">Director, UrbanStyle</p>
-                        </div>
+                <p class="text-gray-300 mb-6 italic">
+                    "The e-commerce platform Vertex Labs built for us has increased our online sales by 120% in just six months. Their attention to detail and user experience focus made all the difference."
+                </p>
+                <div class="flex items-center">
+                    <div>
+                        <h4 class="font-semibold">Michael Chen</h4>
+                        <p class="text-gray-400 text-sm">Director, UrbanStyle</p>
                     </div>
                 </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
-                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div class="flex items-center mb-4">
+                    <div class="text-yellow-400 mr-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "Working with Vertex Labs on our financial analytics dashboard was a game-changer. They understood our complex requirements and delivered a solution that's both powerful and easy to use."
-                    </p>
-                    <div class="flex items-center">
-                        <!-- <div class="w-12 h-12 rounded-full bg-gray-600 mr-4 overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez" class="w-full h-full object-cover">
-                        </div> -->
-                        <div>
-                            <h4 class="font-semibold">Emily Rodriguez</h4>
-                            <p class="text-gray-400 text-sm">CFO, CapitalEdge</p>
-                        </div>
+                </div>
+                <p class="text-gray-300 mb-6 italic">
+                    "Working with Vertex Labs on our financial analytics dashboard was a game-changer. They understood our complex requirements and delivered a solution that's both powerful and easy to use."
+                </p>
+                <div class="flex items-center">
+                    <div>
+                        <h4 class="font-semibold">Emily Rodriguez</h4>
+                        <p class="text-gray-400 text-sm">CFO, CapitalEdge</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -867,7 +857,7 @@
 <section id="contact" class="py-20 bg-white relative overflow-hidden">
     <!-- Floating background elements - now behind content -->
     <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-400 rounded-full filter  opacity-1 animate-float1 z-0"></div>
-    <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-800 rounded-full filter  opacity-1 animate-float2 z-0"></div>
+    <div class="absolute top-1/4 -right-20 w-72 h-72 bg-blue-400 rounded-full filter  opacity-1 animate-float2 z-0"></div>
     <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-blue-600 rounded-full filter  opacity-1 animate-float3 z-0"></div>
 
     <div class="container mx-auto px-6 relative z-10">
