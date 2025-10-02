@@ -142,6 +142,42 @@
                 white-space: nowrap;
             }
         
+            /* Floating particles animation */
+            @keyframes float-particles {
+                0%, 100% { 
+                    transform: translateY(0px) rotate(0deg); 
+                }
+                33% { 
+                    transform: translateY(-20px) rotate(120deg); 
+                }
+                66% { 
+                    transform: translateY(10px) rotate(240deg); 
+                }
+            }
+            
+            .particle {
+                position: absolute;
+                border-radius: 50%;
+                pointer-events: none;
+                animation: float-particles 8s infinite ease-in-out;
+            }
+            
+            .particle:nth-child(1) { animation-delay: -0.5s; }
+            .particle:nth-child(2) { animation-delay: -1s; }
+            .particle:nth-child(3) { animation-delay: -1.5s; }
+            .particle:nth-child(4) { animation-delay: -2s; }
+            .particle:nth-child(5) { animation-delay: -2.5s; }
+            
+            /* Glowing effect */
+            .glow-effect {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+                transition: box-shadow 0.3s ease;
+            }
+            
+            .glow-effect:hover {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            }
+        
             /* Mobile optimizations */
             @media (max-width: 768px) {
                 .animate-scroll {
@@ -234,10 +270,15 @@
     <!-- Navigation -->
     <nav class="container mx-auto px-6 py-4 sticky top-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm rounded-bl-xl rounded-br-xl">
         <div class="flex items-center justify-between">
-            <div class="flex items-center  text-2xl font-bold text-blue-400">
-                <img src="/img/logo.png" alt="Vertex logo" class="h-8 w-auto">
-                vertex<span class="text-white">labs</span>
-              </div>
+            <div class="flex flex-col items-start">
+                <div class="flex items-center text-2xl font-bold text-blue-400">
+                    <img src="/img/logo.png" alt="Vertex logo" class="h-8 w-auto mr-2">
+                    vertex<span class="text-white">labs</span>
+                </div>
+                <p class="text-[10px] text-blue-400 font-small tracking-widest ml-2">
+                    SERVICE <span class="text-white">and</span> INGENUITY
+                </p>
+            </div>
               
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#home" class="hover:text-blue-400 transition">Home</a>
@@ -274,7 +315,14 @@
     <!-- Hero Section -->
 <section id="home" class="min-h-screen flex items-center justify-center overflow-hidden relative bg-gray-900">
     
-       
+    <!-- Floating particles -->
+    <div class="absolute inset-0 z-0">
+        <div class="particle w-2 h-2 bg-blue-400 opacity-60" style="top: 10%; left: 10%;"></div>
+        <div class="particle w-3 h-3 bg-purple-400 opacity-40" style="top: 20%; left: 80%;"></div>
+        <div class="particle w-1 h-1 bg-blue-300 opacity-80" style="top: 60%; left: 15%;"></div>
+        <div class="particle w-2 h-2 bg-indigo-400 opacity-50" style="top: 80%; left: 70%;"></div>
+        <div class="particle w-1 h-1 bg-cyan-400 opacity-70" style="top: 30%; left: 60%;"></div>
+    </div>
     
     <!-- Animated background elements -->
     <div class="absolute inset-0 overflow-hidden z-0">
@@ -289,6 +337,16 @@
     </div>
 
     <div class="container mx-auto px-6 py-20 text-center relative z-10">
+        <!-- Logo/Brand Element -->
+        <div class="flex justify-center mb-8">
+            <div class="relative">
+                <img src="/img/logo.png" alt="Vertex Labs Logo" class="w-20 h-20 mx-auto animate-pulse">
+                <div class="absolute inset-0 rounded-full bg-blue-400 opacity-20 animate-ping"></div>
+            </div>
+        </div>
+        
+       
+        
         <!-- Headline with staggered animation -->
         <div class="overflow-hidden mb-6">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 opacity-10 text-center px-6">
@@ -301,16 +359,16 @@
         </div>
         
         <!-- Subheading -->
-        <p class="text-xl md:text-2xl text-gray-300 mb-10 animate-fade-in-up" style="animation-delay: 0.3s;">
+        <!-- <p class="text-xl md:text-2xl text-gray-300 mb-10 animate-fade-in-up" style="animation-delay: 0.3s;">
             We Create, We Develop, We Inspire
-        </p>
+        </p> -->
         
         <!-- Buttons -->
         <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl glow-effect">
                 Get Started
             </button>
-            <button class="bg-transparent border-2 border-white hover:border-blue-400 text-white hover:text-blue-400 font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+            <button class="bg-transparent border-2 border-white hover:border-blue-400 text-white hover:text-blue-400 font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-white hover:bg-opacity-10">
                 Learn More
             </button>
         </div>
@@ -394,6 +452,115 @@
     </div>
 </section>
 
+<!-- Team Section -->
+<section id="team" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Mission & Vision</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Our purpose and aspirations that drive everything we do</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Mission -->
+            <div class="bg-gray-900 rounded-xl p-8 hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-bullseye text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Our Mission</h3>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        To create a lasting legacy of service and innovation by delivering solutions that improve lives, strengthen communities, and ensure future sustainability across generations.
+                    </p>
+                    <!-- <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Deliver cutting-edge technology solutions</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Foster innovation and digital transformation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Build lasting partnerships with our clients</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            
+            <!-- Vision -->
+            <div class="bg-gray-900 rounded-xl p-8 hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-eye text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Our Vision</h3>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Our vision is to explore what seems impossible and quietly transform the way humanity lives through innovation.
+                    </p>
+                    <!-- <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-purple-400 mr-3"></i>
+                            <span class="text-gray-300">Leading technology innovation hub</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-purple-400 mr-3"></i>
+                            <span class="text-gray-300">Pioneering digital transformation across industries</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-purple-400 mr-3"></i>
+                            <span class="text-gray-300">Creating sustainable technology ecosystems</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Core Values -->
+        <div class="mt-16">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Core Values</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto">The principles that guide our decisions and shape our culture</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Innovation -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Innovation</h4>
+                    <p class="text-gray-400">Constantly pushing boundaries to create breakthrough solutions that redefine what's possible.</p>
+                </div>
+                
+                <!-- Excellence -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-award text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Excellence</h4>
+                    <p class="text-gray-400">Delivering exceptional quality in every project, exceeding expectations at every turn.</p>
+                </div>
+                
+                <!-- Integrity -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white mb-3">Integrity</h4>
+                    <p class="text-gray-400">Building trust through transparency, honesty, and ethical business practices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white relative overflow-hidden">
         <!-- Floating background elements - now more visible on white -->
@@ -411,61 +578,61 @@
                 <!-- Service 1 -->
                 <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-blue-500 transform hover:-translate-y-3 relative overflow-hidden group">
                     <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Software Development</h3>
-                    <p class="text-gray-300">Bespoke software solutions engineered to streamline operations, enhance productivity, and accelerate your business objectives.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Software Development</h3>
+                    <p class="text-gray-300 text-center">Bespoke software solutions engineered to streamline operations, enhance productivity, and accelerate your business objectives.</p>
                 </div>
                 
                 <!-- Service 2 -->
                 <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-purple-500 transform hover:-translate-y-3 relative overflow-hidden group">
-                    <div class="absolute -top-10 -left-10 w-28 h-28 bg-blue-300 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-chess-knight"></i>
+                    <div class="absolute -top-10 -left-10 w-28 h-28 bg-purple-300 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Disruptive Strategy</h3>
-                    <p class="text-gray-300">Innovative business frameworks that challenge conventional models for sustainable competitive advantage.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Mobile Development</h3>
+                    <p class="text-gray-300 text-center">Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.</p>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-indigo-500 transform hover:-translate-y-3 relative overflow-hidden group">
-                    <div class="absolute -bottom-5 -left-5 w-24 h-24 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-chart-line"></i>
+                <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-teal-500 transform hover:-translate-y-3 relative overflow-hidden group">
+                    <div class="absolute -bottom-5 -left-5 w-24 h-24 bg-teal-300 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
+                        <i class="fas fa-globe"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Revenue Optimization</h3>
-                    <p class="text-gray-300">Data-driven methodologies to maximize profitability through enhanced operational efficiency.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Web Development</h3>
+                    <p class="text-gray-300 text-center">Modern, responsive websites and web applications built with cutting-edge technologies and best practices.</p>
                 </div>
                 
                 <!-- Service 4 -->
                 <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-green-500 transform hover:-translate-y-3 relative overflow-hidden group">
                     <div class="absolute -top-5 -right-5 w-20 h-20 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Consulting</h3>
-                    <p class="text-gray-300">Expert guidance to navigate digital transformation challenges and opportunities.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Consulting</h3>
+                    <p class="text-gray-300 text-center">Expert guidance to navigate digital transformation challenges and opportunities.</p>
                 </div>
                 
                 <!-- Service 5 -->
                 <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-yellow-500 transform hover:-translate-y-3 relative overflow-hidden group">
                     <div class="absolute bottom-0 right-0 w-32 h-32 bg-blue-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
                         <i class="fas fa-flask"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Research & Development</h3>
-                    <p class="text-gray-300">Cutting-edge technological exploration to future-proof your business.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Research & Development</h3>
+                    <p class="text-gray-300 text-center">Cutting-edge technological exploration to future-proof your business.</p>
                 </div>
                 
                 <!-- Service 6 -->
                 <div class="bg-vertex-navy rounded-xl p-8 transition-all duration-500 hover:bg-gray-800 hover:shadow-2xl hover:border-b-4 hover:border-red-500 transform hover:-translate-y-3 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-28 h-28 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300">
+                    <div class="text-blue-400 text-4xl mb-6 transform hover:scale-110 transition-transform duration-300 text-center">
                         <i class="fas fa-digital-tachograph"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Digitization</h3>
-                    <p class="text-gray-300">Modernization of legacy systems to digital platforms for better efficiency.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Digitization</h3>
+                    <p class="text-gray-300 text-center">Modernization of legacy systems to digital platforms for better efficiency.</p>
                 </div>
             </div>
         </div>
@@ -566,13 +733,13 @@
                 
                 <!-- Project 3 -->
                 <div class="group relative overflow-hidden rounded-xl h-64">
-                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="E-commerce Platform" 
+                    <img src="/img/ecommerce-solution.jpg" 
+                         alt="E-Commerce Platform" 
                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <h3 class="text-2xl font-semibold mb-2">ShopSphere</h3>
                         <p class="text-gray-300 mb-4">Custom e-commerce platform with AI-powered recommendations.</p>
-                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study →</a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View (Coming Soon) →</a>
                     </div>
                 </div>
             </div>
@@ -617,6 +784,7 @@
                     "Their AI-driven solutions and cloud systems streamlined our workflows and improved team productivity. We've seen measurable growth and better decision-making across the board. Partnering with Vertex was one of the best decisions we've made."
                 </p>
                 <div class="flex items-center">
+                    <!-- <img src="/img/testimonial-1.jpg" alt="Chiamaka Emem" class="w-12 h-12 rounded-full mr-4 object-cover"> -->
                     <div>
                         <h4 class="font-semibold">Chiamaka Emem</h4>
                         <p class="text-gray-400 text-sm">CEO, Opium Digitals</p>
@@ -640,6 +808,7 @@
                     "The e-commerce platform Vertex Labs built for us has increased our online sales by 120% in just six months. Their attention to detail and user experience focus made all the difference."
                 </p>
                 <div class="flex items-center">
+                    <!-- <img src="/img/testimonial-2.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover"> -->
                     <div>
                         <h4 class="font-semibold">Michael Chen</h4>
                         <p class="text-gray-400 text-sm">Director, UrbanStyle</p>
@@ -663,6 +832,7 @@
                     "Working with Vertex Labs on our financial analytics dashboard was a game-changer. They understood our complex requirements and delivered a solution that's both powerful and easy to use."
                 </p>
                 <div class="flex items-center">
+                    <!-- <img src="/img/testimonial-3.jpg" alt="Emily Rodriguez" class="w-12 h-12 rounded-full mr-4 object-cover"> -->
                     <div>
                         <h4 class="font-semibold">Emily Rodriguez</h4>
                         <p class="text-gray-400 text-sm">CFO, CapitalEdge</p>
@@ -875,7 +1045,7 @@
                         </div>
                         <div>
                             <h4 class="font-semibold mb-1 text-gray-900">Our Office</h4>
-                            <p class="text-gray-800">123 Tech Park Drive, Silicon Valley, CA 94025</p>
+                            <p class="text-gray-800">23B Dame Omeje Drive, mkpokiti (MSP) estate independent. layout Enugu</p>
                         </div>
                     </div>
                     
@@ -885,8 +1055,7 @@
                         </div>
                         <div>
                             <h4 class="font-semibold mb-1 text-gray-900">Email Us</h4>
-                            <p class="text-gray-800">info@vertexlabs.com</p>
-                            <p class="text-gray-800">support@vertexlabs.com</p>
+                            <p class="text-gray-800">service@vertexslab.com</p>
                         </div>
                     </div>
                     
@@ -896,8 +1065,8 @@
                         </div>
                         <div>
                             <h4 class="font-semibold mb-1 text-gray-900">Call Us</h4>
-                            <p class="text-gray-800">+1 (555) 123-4567</p>
-                            <p class="text-gray-800">Mon-Fri: 9am-6pm EST</p>
+                            <p class="text-gray-800">(+234) 916 1010 168</p>
+                            <p class="text-gray-800">Mon-Fri: 8:00am-5:30pm WAT</p>
                         </div>
                     </div>
                     
@@ -919,35 +1088,39 @@
                         <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
+                        <!-- <a href="#" class="bg-vertex-navy text-white hover:bg-vertex-blue w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-github"></i>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
             
             <div class="lg:w-1/2">
-                <form class="bg-gray-800 p-8 rounded-xl">
+                <form id="contactForm" action="send_email_production.php" method="POST" class="bg-gray-800 p-8 rounded-xl">
+                    <!-- Response message area -->
+                    <div id="responseMessage" class="mb-4 p-4 rounded-md hidden"></div>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="name" class="block text-white mb-2">Name</label>
-                            <input type="text" id="name" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="name" name="name" required class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label for="email" class="block text-white mb-2">Email</label>
-                            <input type="email" id="email" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="email" id="email" name="email" required class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                     </div>
                     <div class="mb-6">
                         <label for="subject" class="block text-white mb-2">Subject</label>
-                        <input type="text" id="subject" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="subject" name="subject" required class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div class="mb-6">
                         <label for="message" class="block text-white mb-2">Message</label>
-                        <textarea id="message" rows="5" class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <textarea id="message" name="message" rows="5" required class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition">
-                        Send Message
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-md transition">
+                        <span id="submitText">Send Message</span>
+                        <span id="loadingText" class="hidden">Sending...</span>
                     </button>
                 </form>
             </div>
@@ -971,7 +1144,7 @@
             <!-- Custom Software Development -->
             <div class="service-card w-[250px] md:w-[320px] flex-shrink-0 bg-white rounded-xl shadow-sm md:shadow-md overflow-hidden h-[340px] md:h-[380px] mr-4 md:mr-6">
                 <div class="h-32 md:h-40 bg-gradient-to-r from-blue-500 to-blue-700">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Custom Software" class="w-full h-full object-cover">
+                    <img src="/img/custom-software.jpg" alt="Custom Software" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 md:p-6 flex flex-col flex-grow min-h-0">
                     <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Custom Software</h2>
@@ -1004,7 +1177,7 @@
             <!-- AI & Automation -->
             <div class="service-card w-[250px] md:w-[320px] flex-shrink-0 bg-white rounded-xl shadow-sm md:shadow-md overflow-hidden h-[340px] md:h-[380px] mr-4 md:mr-6">
                 <div class="h-32 md:h-40 bg-gradient-to-r from-indigo-500 to-indigo-700">
-                    <img src="https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AI Solutions" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="AI Solutions" class="w-full h-full object-cover">
                 </div>
                 <div class="p-4 md:p-6 flex flex-col flex-grow min-h-0">
                     <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">AI & Automation</h2>
@@ -1135,15 +1308,23 @@
                         Innovating digital solutions to drive business growth and transformation.
                     </p>
                     <div class="flex space-x-4 mt-6">
-                        <a href="https://x.com" class="text-gray-400 hover:text-blue-400 transition mt-1" target="_blank" rel="noopener">
+                        <a href="https://x.com" class="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 mt-1.5" target="_blank" rel="noopener">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" fill="currentColor" class="w-5 h-4">
                               <path d="M707.444 516.121L1156.36 0H1051.74L660.826 455.074L360.29 0H0L476.348 693.83L0 1227H104.726L526.167 738.965L839.71 1227H1200L707.444 516.121ZM574.555 674.236L532.184 616.525L171.323 84.03H322.835L615.547 517.968L657.917 575.679L1046.8 1144.88H894.759L574.555 674.236Z"/>
                             </svg>
-                          </a>
-                          
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <!-- <a href="#" class="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-github text-lg"></i>
+                        </a> -->
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1186,6 +1367,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 transform scale-0 z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1193,6 +1379,38 @@
         
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.transform = 'scale(1)';
+            } else {
+                backToTopButton.style.transform = 'scale(0)';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
         // FAQ toggle functionality
@@ -1236,6 +1454,62 @@
                         mobileMenu.classList.add('hidden');
                     }
                 }
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingText = document.getElementById('loadingText');
+            const responseMessage = document.getElementById('responseMessage');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            loadingText.classList.remove('hidden');
+            responseMessage.classList.add('hidden');
+            
+            // Send form data via AJAX
+            fetch('send_email_production.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show response message
+                responseMessage.textContent = data.message;
+                responseMessage.classList.remove('hidden');
+                
+                if (data.status === 'success') {
+                    responseMessage.className = 'mb-4 p-4 rounded-md bg-green-600 text-white';
+                    form.reset(); // Clear form on success
+                } else {
+                    responseMessage.className = 'mb-4 p-4 rounded-md bg-red-600 text-white';
+                }
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                responseMessage.textContent = 'An error occurred. Please try again later.';
+                responseMessage.className = 'mb-4 p-4 rounded-md bg-red-600 text-white';
+                responseMessage.classList.remove('hidden');
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
             });
         });
     </script>
